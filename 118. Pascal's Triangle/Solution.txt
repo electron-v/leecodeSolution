@@ -1,0 +1,49 @@
+118. Pascal's Triangle
+
+Given an integer numRows, return the first numRows of Pascal's triangle.
+
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+
+Example 1:
+
+Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+Example 2:
+
+Input: numRows = 1
+Output: [[1]]
+ 
+
+Constraints:
+
+1 <= numRows <= 30
+
+Solution :
+_______________________________________________________________________________
+Python :
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        
+#       MySolution
+        res = []     
+        res.append([1])      
+        i = 2
+        while(i<=numRows):
+            
+            ls = [0] * i
+            
+            ls[0], ls[i-1] = 1,1
+            start = 1
+            while(start<i-1):
+                ls[start] = res[i-2][start-1] + res[i-2][start]
+                start += 1
+                
+            res.append(ls)    
+            i += 1
+            
+        return res
+        
+        
+        
